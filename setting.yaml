@@ -1,0 +1,79 @@
+
+#
+seed: 42
+batch_size: 1
+device: 'cuda'
+save_frq: 1000
+gen_num: 5000
+skip_num: 0
+
+#make change
+
+run_type: 'cdzl'  # init caption  cdzl
+init_caption: 'C:\Users\zx\Desktop\Cdzl-new\results\caption_shuffle_random_len12_model\xlm-roberta-base_topk200_gennum5000_2025.05.08-04.46.19\result-4999\sample_0\process.json'#noly cdzl is effect
+
+control_type: 'len' #sentiment len
+sentiment_type: 'positive'  #postive neigtive
+using_yolos: true
+object_detector: true
+
+#--init
+use_mergeanddup : True
+use_confdience : True
+use_post : True
+use_correlation : True
+
+#--mk-bert
+mask_num: 1
+init_method: 'random'
+prompt: 'Image of a '
+order: 'shuffle'
+
+samples_num: 1
+sentence_len: 12  #句子长度
+candidate_k: 200
+alpha: 0.02
+beta: 2.0
+gamma: 5.0
+delata: 0.5
+fz: 1
+lm_temperature: 0.1
+num_iterations: 5
+
+yolos_threshold : 0.8
+
+
+
+pos_type:
+  - ['DET']
+  - ['ADJ', 'NOUN']
+  - ['NOUN']
+  - ['VERB']
+  - ['VERB']
+  - ['ADV']
+  - ['ADP']
+  - ['DET', 'NOUN']
+  - ['NOUN']
+  - ['NOUN', '.']
+  - ['.', 'NOUN']
+
+
+
+#data path
+lm_model: 'model/xlm-roberta-base'
+match_model: 'model/clip-vit-base-patch32'
+detection_model: 'model/yolos-base'
+llm_model : "deepseek"
+adm_model : ""
+gsm_model : ""
+
+caption_img_path: 'C:/Data'
+caption_json_data: 'requement/coco_karpathy_val.json'
+senticap_json_data: 'requement/senticap_dataset.json'
+stop_words_path: 'requement/stop_words.txt'
+vocab_words: 'requement/vocab_words.txt'
+vocab_words_pkl: 'requement/vocab_words.pkl'
+coco_train2014df: '../requement/coco-train2014-df.p'
+
+
+add_extra_stopwords: []
